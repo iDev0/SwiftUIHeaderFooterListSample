@@ -9,8 +9,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let appleDevices = ["iPhone", "iMac", "iPad", "AppleWatch"]
+    let shapes = ["Circle", "Rectangle"]
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            List {
+                
+                Section(header: Text("AppleDeivces")) {
+                    ForEach(0 ..< appleDevices.count) {
+                        Text(self.appleDevices[$0])
+                    }
+                }
+                
+                Section(header:
+                    HStack {
+                        Image(systemName: "shapes")
+                        Text("shapes")
+                    }
+                    , footer: Text("난 푸터다").font(.footnote)) {
+                        ForEach(0 ..< shapes.count) {
+                            Text(self.shapes[$0])
+                        }
+                    }
+            }.navigationBarTitle("아무거나 목록")
+        }
     }
 }
 
